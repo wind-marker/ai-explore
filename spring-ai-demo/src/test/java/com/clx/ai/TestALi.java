@@ -1,15 +1,16 @@
 package com.clx.ai;
 
+import com.alibaba.cloud.ai.dashscope.audio.DashScopeAudioSpeechModel;
+import com.alibaba.cloud.ai.dashscope.audio.DashScopeAudioSpeechOptions;
 import com.alibaba.cloud.ai.dashscope.audio.DashScopeAudioTranscriptionModel;
 import com.alibaba.cloud.ai.dashscope.audio.DashScopeAudioTranscriptionOptions;
-import com.alibaba.cloud.ai.dashscope.audio.DashScopeSpeechSynthesisModel;
-import com.alibaba.cloud.ai.dashscope.audio.DashScopeSpeechSynthesisOptions;
 import com.alibaba.cloud.ai.dashscope.audio.synthesis.SpeechSynthesisPrompt;
 import com.alibaba.cloud.ai.dashscope.audio.synthesis.SpeechSynthesisResponse;
 import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel;
 import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatOptions;
 import com.alibaba.cloud.ai.dashscope.image.DashScopeImageModel;
 import com.alibaba.cloud.ai.dashscope.image.DashScopeImageOptions;
+import com.alibaba.dashscope.aigc.multimodalconversation.MultiModalConversation;
 import com.alibaba.dashscope.aigc.videosynthesis.VideoSynthesis;
 import com.alibaba.dashscope.aigc.videosynthesis.VideoSynthesisParam;
 import com.alibaba.dashscope.aigc.videosynthesis.VideoSynthesisResult;
@@ -58,9 +59,9 @@ public class TestALi {
 
     // 文生语音
     @Test
-    public void testQwenTTS(@Autowired DashScopeSpeechSynthesisModel speechSynthesisModel){
+    public void testQwenTTS(@Autowired DashScopeAudioSpeechModel speechSynthesisModel){
         // 新版本模型貌似调用会出问题，原因未知
-        DashScopeSpeechSynthesisOptions options = DashScopeSpeechSynthesisOptions.builder()
+        DashScopeAudioSpeechOptions options = DashScopeAudioSpeechOptions.builder()
                 .model("cosyvoice-v1")
                 .build();
 
