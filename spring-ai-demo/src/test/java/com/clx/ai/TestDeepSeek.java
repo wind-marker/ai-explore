@@ -3,11 +3,14 @@ package com.clx.ai;
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.deepseek.DeepSeekAssistantMessage;
 import org.springframework.ai.deepseek.DeepSeekChatModel;
 import org.springframework.ai.deepseek.DeepSeekChatOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import reactor.core.publisher.Flux;
+
+import java.sql.SQLOutput;
 
 @SpringBootTest
 public class TestDeepSeek {
@@ -42,6 +45,15 @@ public class TestDeepSeek {
         ChatResponse res = deepSeekChatModel.call(new Prompt("ok，我已经调用到你了", options));
         // 从 ChatMessage 中提取纯文本内容
         System.out.println(res.getResult().getOutput().getText());
+    }
+
+    @Test
+    public void testDeepseekReasoning(@Autowired DeepSeekChatModel deepSeekChatModel){
+        Prompt prompt = new Prompt("你好，看看你的深度思考功能");
+        ChatResponse res = deepSeekChatModel.call(prompt);
+        DeepSeekAssistantMessage output = (DeepSeekAssistantMessage) res.getResult().getOutput();
+        System.out.println("获取到的思考链内容:"+output.getReasoningContent());
+        System.out.println("获取到的具体内容:"+output.getText());
     }
 
 }
