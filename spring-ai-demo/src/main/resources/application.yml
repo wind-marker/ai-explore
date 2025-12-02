@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    username: root
+    password: ROOT
+    url: jdbc:mysql://localhost:3306/ai?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
