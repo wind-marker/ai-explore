@@ -15,6 +15,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>spring-ai-demo</module>
+        <module>ai-tools</module>
     </modules>
 
     <properties>
